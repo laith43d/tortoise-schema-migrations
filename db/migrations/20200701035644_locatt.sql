@@ -1,0 +1,25 @@
+-- migrate:up
+
+BEGIN;
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+ALTER TABLE `tournament` ADD COLUMN `location` LONGTEXT NOT NULL AFTER `name`;
+ALTER TABLE `tournament` ADD COLUMN `att` LONGTEXT NOT NULL AFTER `location`;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+COMMIT;
+
+-- migrate:down
+
+BEGIN;
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+ALTER TABLE `tournament` DROP COLUMN `location`;
+ALTER TABLE `tournament` DROP COLUMN `att`;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+COMMIT;
