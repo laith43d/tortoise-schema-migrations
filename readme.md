@@ -11,13 +11,13 @@ you can use the tool as follows:
 
 1. You should initialize the database first:
 
-edit .env file, add your DATABASE_URL so `dbmate` can connect to the database.
+edit .env file, add your DATABASE_URI so `dbmate` can connect to the database.
 
 `python manage.py initdb`
 
 2. Make you first migration:
 
-`python manage.py makemigrations -n add_users_table`
+`python manage.py makemigrations -n add_user_table`
 
 3. Migrate your schema:
 
