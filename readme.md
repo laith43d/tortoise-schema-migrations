@@ -11,6 +11,8 @@ you can use the tool as follows:
 
 1. You should initialize the database first:
 
+edit .env file, add your DATABASE_URL so `dbmate` can connect to the database.
+
 `python manage.py initdb`
 
 2. Make you first migration:
