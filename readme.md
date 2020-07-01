@@ -23,7 +23,7 @@ edit .env file, add your DATABASE_URL so `dbmate` can connect to the database.
 
 `python manage.py migrate`
 
-4. If you make a mistake or with to rollback your last migration:
+4. If you make a mistake or wish to rollback your last migration:
 
 `python manage.py rollback`
 
