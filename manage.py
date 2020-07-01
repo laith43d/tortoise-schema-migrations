@@ -21,13 +21,13 @@ async def makemigrations(args):
     """
         1.get old_schema.sql
         2.dump current sql
-        3.schemalex old_schema.sql old_schema.sql
+        3.schemalex old_schema.sql new_schema.sql
     :param args:
     :return:
     """
     name = args.name
     await Tortoise.init(config=settings.TORTOISE_ORM)
-    
+
     new_sql = get_schema_sql(Tortoise.get_connection('default'), safe=False)
     with open(NEW_SCHEMA_FILE, 'w') as f:
         f.write(new_sql)
@@ -36,14 +36,14 @@ async def makemigrations(args):
     if not os.path.exists(OLD_SCHEMA_FILE):
         with open(OLD_SCHEMA_FILE, 'w') as f:
             f.write(new_sql)
-    
+
     up_sql = os.popen(f'schemalex {OLD_SCHEMA_FILE} {NEW_SCHEMA_FILE}').read()
     down_sql = os.popen(f'schemalex {NEW_SCHEMA_FILE} {OLD_SCHEMA_FILE}').read()
     if up_sql == down_sql:
         os.unlink(NEW_SCHEMA_FILE)
         print(Fore.BLUE + 'No changes detected')
         return
-    
+
     if not os.path.exists(MIGRATIONS_DIR):
         os.mkdir(MIGRATIONS_DIR)
 
