@@ -17,4 +17,4 @@ sentry-sdk==0.15.1
 six==1.15.0
 tortoise-orm==0.16.13
 typing-extensions==3.7.4.2
-urllib3==1.25.9
+urllib3==1.26.5
