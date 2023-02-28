@@ -41,7 +41,7 @@ async def makemigrations(args):
     down_sql = os.popen(f'schemalex {NEW_SCHEMA_FILE} {OLD_SCHEMA_FILE}').read()
     if up_sql == down_sql:
         os.unlink(NEW_SCHEMA_FILE)
-        print(Fore.BLUE + 'No changes detected')
+        print(f'{Fore.BLUE}No changes detected')
         return
 
     if not os.path.exists(MIGRATIONS_DIR):
@@ -57,7 +57,7 @@ async def makemigrations(args):
 
     os.unlink(NEW_SCHEMA_FILE)
 
-    print(Fore.GREEN + f'Generate sql file {up_sql_file}.')
+    print(f'{Fore.GREEN}Generate sql file {up_sql_file}.')
 
 
 async def migrate(args):
